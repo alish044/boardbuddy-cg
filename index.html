@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102c54">
+<title>BoardBuddy CG | CGBSE Study Library</title>
+<style>
+:root{--navy:#102c54;--blue:#235bd6;--sky:#eaf1ff;--ink:#172033;--muted:#65718a;--line:#e1e7f0;--bg:#f6f8fc;--green:#13795b;--gold:#ffcf66}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}a{color:inherit;text-decoration:none}button,select{font:inherit}.wrap{width:min(1120px,92%);margin:auto}
+header{background:var(--navy);color:white;position:sticky;top:0;z-index:10;box-shadow:0 4px 20px #071b3633}.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}.brand{font-weight:850;letter-spacing:.2px;font-size:1.1rem}.brand span{color:var(--gold)}.navlinks{display:flex;gap:18px;align-items:center;font-size:.92rem}.navlinks a{opacity:.92}.navlinks a:hover{opacity:1}.menu{display:none;background:transparent;border:1px solid #ffffff55;color:white;border-radius:10px;padding:8px 10px}
+.hero{background:linear-gradient(125deg,#102c54,#1d4d9c 68%,#3976e8);color:white;padding:50px 0 42px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#ffffff18;border:1px solid #ffffff30;border-radius:100px;padding:7px 12px;font-size:.82rem}.hero h1{font-size:clamp(2rem,5vw,3.45rem);line-height:1.08;letter-spacing:-1.4px;margin:17px 0}.hero p{color:#e3ebff;max-width:580px;line-height:1.65}.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.btn{border:0;border-radius:12px;padding:12px 17px;font-weight:750;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,opacity .15s}.btn:hover{transform:translateY(-1px)}.primary{background:var(--gold);color:#18243b}.secondary{background:#ffffff17;color:white;border:1px solid #ffffff55}.blue{background:var(--blue);color:white}.outline{background:white;border:1px solid var(--line);color:var(--navy)}.hero-card{background:#ffffff12;border:1px solid #ffffff32;border-radius:22px;padding:22px;backdrop-filter:blur(6px)}.hero-card h3{margin:0 0 14px}.mini-stat{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #ffffff28}.mini-stat:last-child{border:0}.ico{display:grid;place-items:center;width:43px;height:43px;flex-shrink:0;border-radius:13px;background:var(--sky);color:var(--blue);font-size:1.25rem}.mini-stat .ico{background:#ffffff1f;color:white}.mini-stat strong{display:block}.mini-stat small{color:#dbe6ff}
+section{padding:34px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:18px}.section-head h2{font-size:clamp(1.45rem,3vw,2rem);margin:0;letter-spacing:-.5px}.section-head p{margin:6px 0 0;color:var(--muted);line-height:1.5}.tag{display:inline-block;padding:5px 9px;border-radius:100px;background:#e5f7ef;color:var(--green);font-size:.78rem;font-weight:750}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 22px}.select{background:white;border:1px solid var(--line);padding:11px 13px;border-radius:11px;color:var(--ink);min-width:170px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:white;border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:0 5px 20px #15294a06}.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.card h3{margin:13px 0 7px;font-size:1.05rem}.card p{color:var(--muted);font-size:.91rem;line-height:1.5;margin:0 0 14px}.card .btn{width:100%;padding:10px}.meta{font-size:.78rem;color:var(--muted)}.lock{background:#fff5dd;color:#875900}.premium{background:linear-gradient(120deg,#fff,#f0f5ff);border:1px solid #cbd9fb;border-radius:22px;padding:25px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}.premium h2{margin:8px 0;font-size:1.6rem}.premium p{color:var(--muted);line-height:1.6;margin:0}.price{font-size:2.1rem;font-weight:850;color:var(--navy)}.price small{font-size:.85rem;font-weight:600;color:var(--muted)}.features{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.feature{font-size:.83rem;background:white;border:1px solid var(--line);border-radius:9px;padding:7px 10px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step{background:white;border:1px solid var(--line);border-radius:16px;padding:18px}.step-num{background:var(--sky);color:var(--blue);width:36px;height:36px;display:grid;place-items:center;border-radius:11px;font-weight:850}.step h3{margin:12px 0 6px}.step p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.5}
+footer{background:#0b1f3c;color:white;padding:28px 0;margin-top:24px}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-row p{color:#b9c8e2;font-size:.86rem;max-width:650px;line-height:1.55}.notice{background:#fff7e7;border:1px solid #f4d99a;color:#684b10;border-radius:12px;padding:12px 14px;font-size:.85rem;line-height:1.5;margin-top:16px}
+.modal-backdrop{position:fixed;inset:0;background:#08172ccc;z-index:30;display:none;align-items:center;justify-content:center;padding:18px}.modal-backdrop.open{display:flex}.modal{background:white;border-radius:20px;padding:24px;width:min(440px,100%);box-shadow:0 20px 70px #0004}.modal h2{margin:0 0 8px}.modal p{color:var(--muted);line-height:1.55}.modal .btn{width:100%;margin-top:10px}.close{float:right;border:0;background:#eef2f8;border-radius:9px;padding:6px 10px;cursor:pointer}.sample-view{background:#f7f9fd;border:1px dashed #b7c8e5;border-radius:12px;padding:16px;margin-top:14px;line-height:1.6}.sample-view h3{margin-top:0}.small{font-size:.8rem;color:var(--muted)}
+@media(max-width:760px){.hero-grid{grid-template-columns:1fr}.hero{padding:35px 0}.hero-card{max-width:560px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.premium{grid-template-columns:1fr}.premium .price-wrap{display:flex;align-items:center;justify-content:space-between;gap:15px}.steps{grid-template-columns:1fr}.navlinks{display:none;position:absolute;top:58px;left:0;right:0;background:var(--navy);padding:18px 4%;flex-direction:column;align-items:flex-start}.navlinks.show{display:flex}.menu{display:block}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.select{width:100%}.controls{display:grid;grid-template-columns:1fr}.hero h1{letter-spacing:-.8px}.card{padding:16px}.hero-actions .btn{flex:1}.premium{padding:20px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#"><span>Board</span>Buddy CG</a>
+    <button class="menu" id="menuBtn" aria-label="Open navigation">☰ Menu</button>
+    <nav class="navlinks" id="navlinks">
+      <a href="#free">Free Samples</a><a href="#library">Study Library</a><a href="#how">How it works</a><a href="#library" class="btn primary" style="padding:9px 13px">Unlock ₹30/year</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">📚 CGBSE • Class 10 &amp; 12</span>
+        <h1>Board exams ki preparation, <span style="color:var(--gold)">ek jagah.</span></h1>
+        <p>Notes, previous-year paper samples aur exam revision guides ko subject-wise explore karo. Pehle free samples dekho, phir full library unlock karo.</p>
+        <div class="hero-actions"><a class="btn primary" href="#free">Explore free samples ↓</a><a class="btn secondary" href="#library">Full library — ₹30/year</a></div>
+        <p class="small" style="color:#dbe6ff;margin-top:15px">Mobile-friendly student demo • Hindi + English interface</p>
+      </div>
+      <div class="hero-card">
+        <h3>Apni class choose karo</h3>
+        <div class="mini-stat"><div class="ico">10</div><div><strong>Class 10th</strong><small>Board exam practice</small></div></div>
+        <div class="mini-stat"><div class="ico">12</div><div><strong>Class 12th</strong><small>Subject-wise revision</small></div></div>
+        <div class="mini-stat"><div class="ico">PDF</div><div><strong>Study resources</strong><small>Samples now, full library after access</small></div></div>
+      </div>
+    </div>
+  </section>
+  <section id="free">
+    <div class="wrap">
+      <div class="section-head"><div><span class="tag">FREE ACCESS</span><h2 style="margin-top:10px">Free study samples</h2><p>Har category ke 2 sample resources ka demo. Filters se class aur category badlo.</p></div></div>
+      <div class="controls">
+        <select class="select" id="classFilter" aria-label="Select class"><option value="all">Class 10th + 12th</option><option value="10">Class 10th</option><option value="12">Class 12th</option></select>
+        <select class="select" id="categoryFilter" aria-label="Select category"><option value="all">All categories</option><option value="notes">Notes</option><option value="papers">Previous-year papers</option><option value="guides">Exam guides</option></select>
+      </div>
+      <div class="grid" id="sampleGrid"></div>
+      <div class="notice">Demo note: yahan example/sample resource cards hain. Real CGBSE PDFs add karne se pehle unki authenticity, academic year aur sharing permission verify karein.</div>
+    </div>
+  </section>
+  <section id="library">
+    <div class="wrap">
+      <div class="premium">
+        <div>
+          <span class="tag">FULL LIBRARY</span>
+          <h2>Saare available resources, ek jagah.</h2>
+          <p>Subject-wise notes, previous-year papers aur revision guides. Annual access ek academic year ke liye — ₹30.</p>
+          <div class="features"><span class="feature">✓ Class 10 &amp; 12</span><span class="feature">✓ Subject-wise PDFs</span><span class="feature">✓ Exam revision</span><span class="feature">✓ Mobile friendly</span></div>
+        </div>
+        <div class="price-wrap"><div class="price">₹30 <small>/ academic year</small></div><button class="btn blue" id="unlockBtn">Unlock full library</button></div>
+      </div>
+      <h2 style="margin:28px 0 8px">Paid library preview</h2>
+      <p style="color:var(--muted);margin-top:0">Categories ka sample layout. Actual paid files secure backend/payment integration ke baad hi unlock honi chahiye.</p>
+      <div class="grid">
+        <article class="card"><div class="card-top"><div class="ico">📘</div><span class="tag lock">🔒 Locked</span></div><h3>Complete Notes</h3><p>Chapter-wise notes aur revision material, subject ke hisaab se.</p><button class="btn outline unlockSmall">Unlock to access</button></article>
+        <article class="card"><div class="card-top"><div class="ico">📝</div><span class="tag lock">🔒 Locked</span></div><h3>Previous-year Papers</h3><p>Available board papers aur practice sets, year-wise organized.</p><button class="btn outline unlockSmall">Unlock to access</button></article>
+        <article class="card"><div class="card-top"><div class="ico">🎯</div><span class="tag lock">🔒 Locked</span></div><h3>Exam Guides</h3><p>Revision checklists, study plans aur exam preparation guides.</p><button class="btn outline unlockSmall">Unlock to access</button></article>
+      </div>
+      <div class="notice"><strong>Payment is not active in this demo.</strong> The unlock button only shows this notice; it does not collect money or grant real paid access. A secure payment gateway and server-side verification are required before launch.</div>
+    </div>
+  </section>
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Kaise kaam karega?</h2><p>Student ke liye simple 3-step experience.</p></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h3>Class &amp; subject choose karo</h3><p>Class 10th ya 12th ke resources ko subject aur category ke hisaab se browse karo.</p></div>
+        <div class="step"><div class="step-num">2</div><h3>Free samples dekho</h3><p>Har category ke do free sample resources se quality check karo.</p></div>
+        <div class="step"><div class="step-num">3</div><h3>Annual access unlock karo</h3><p>Future live version mein payment verify hone par full permitted library unlock hogi.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-row"><div><div class="brand"><span>Board</span>Buddy CG</div><p>Independent student-support demo for CGBSE Class 10th and 12th. Not an official CGBSE website. Verify important exam information with official board sources.</p></div><div><strong>Useful</strong><p><a href="#free">Free samples</a><br><a href="#library">Study library</a><br><a href="#how">How it works</a></p></div></div></footer>
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal"><button class="close" id="closeModal" aria-label="Close">✕</button><h2 id="modalTitle">Sample resource</h2><p id="modalDesc">This is a sample preview.</p><div class="sample-view" id="sampleView"></div><button class="btn blue" id="modalDone">Back to library</button><p class="small">Demo preview only. Replace with verified, permitted study material before publishing.</p></div>
+</div>
+<script>
+const resources = [
+ {id:1,cls:"10",cat:"notes",subject:"Science",title:"Science Notes — Sample 1",desc:"Chapter revision overview and key terms.",content:"<h3>Science • Sample Notes</h3><p><strong>Revision tip:</strong> Har chapter ke key terms, diagrams aur examples ko alag list karo.</p><p>Actual notes yahan verified PDF ya original study content ke roop mein add honge.</p>"},
+ {id:2,cls:"10",cat:"notes",subject:"Mathematics",title:"Maths Notes — Sample 2",desc:"Formula sheet preview for quick revision.",content:"<h3>Mathematics • Formula Preview</h3><p>Formula revise karne ke baad ek solved example aur ek khud se practice question zaroor karo.</p><p>Actual chapter-wise notes yahan add honge.</p>"},
+ {id:3,cls:"10",cat:"papers",subject:"Hindi",title:"Hindi Paper — Sample 1",desc:"Previous-year paper sample card.",content:"<h3>Hindi • Paper Preview</h3><p>Is demo mein asli board paper included nahi hai. Verified, permitted paper ka PDF link yahan add kiya jayega.</p>"},
+ {id:4,cls:"10",cat:"papers",subject:"English",title:"English Paper — Sample 2",desc:"Practice paper preview.",content:"<h3>English • Practice Preview</h3><p>Paper attempt karte waqt time limit set karein aur end mein answers review karein.</p>"},
+ {id:5,cls:"10",cat:"guides",subject:"All subjects",title:"Exam Guide — Sample 1",desc:"Revision checklist preview.",content:"<h3>Exam Guide • Checklist</h3><ul><li>Important chapters mark karo</li><li>Timed practice karo</li><li>Galtiyon ki list revise karo</li></ul>"},
+ {id:6,cls:"10",cat:"guides",subject:"Study plan",title:"Exam Guide — Sample 2",desc:"Simple weekly study plan preview.",content:"<h3>Weekly Study Plan</h3><p>Daily study blocks ko subject, practice aur revision mein divide karo. Breaks aur sleep ke liye bhi time rakho.</p>"},
+ {id:7,cls:"12",cat:"notes",subject:"Biology",title:"Biology Notes — Sample 1",desc:"Key concepts and terminology preview.",content:"<h3>Biology • Sample Notes</h3><p>Diagrams ko label ke saath practice karein aur concepts ko apne words mein explain karein.</p>"},
+ {id:8,cls:"12",cat:"notes",subject:"Physics",title:"Physics Notes — Sample 2",desc:"Formula and concept recap preview.",content:"<h3>Physics • Formula Preview</h3><p>Formula ke saath units aur ek worked example bhi revise karein.</p>"},
+ {id:9,cls:"12",cat:"papers",subject:"Chemistry",title:"Chemistry Paper — Sample 1",desc:"Previous-year paper sample card.",content:"<h3>Chemistry • Paper Preview</h3><p>Actual previous-year paper ka verified, permitted PDF yahan add kiya jayega.</p>"},
+ {id:10,cls:"12",cat:"papers",subject:"English",title:"English Paper — Sample 2",desc:"Practice paper preview.",content:"<h3>English • Practice Preview</h3><p>Writing section aur reading comprehension ke liye timed practice karein.</p>"},
+ {id:11,cls:"12",cat:"guides",subject:"All subjects",title:"Exam Guide — Sample 1",desc:"Board exam revision guide preview.",content:"<h3>Revision Guide</h3><p>Weak topics ko identify karke short revision sessions schedule karein.</p>"},
+ {id:12,cls:"12",cat:"guides",subject:"Study plan",title:"Exam Guide — Sample 2",desc:"Final-week planning preview.",content:"<h3>Final-week Plan</h3><p>New material ke bajay key concepts, practice mistakes aur rest par focus karein.</p>"}
+];
+const labels={notes:"Notes",papers:"Previous-year paper",guides:"Exam guide"};
+const icons={notes:"📘",papers:"📝",guides:"🎯"};
+const grid=document.getElementById("sampleGrid");
+function render(){
+ const cls=document.getElementById("classFilter").value,cat=document.getElementById("categoryFilter").value;
+ const filtered=resources.filter(r=>(cls==="all"||r.cls===cls)&&(cat==="all"||r.cat===cat));
+ // Show only two free samples per category for the selected class filter.
+ const seen={notes:0,papers:0,guides:0};
+ const shown=filtered.filter(r=>{if(seen[r.cat]>=2)return false;seen[r.cat]++;return true;});
+ grid.innerHTML=shown.map(r=>`<article class="card"><div class="card-top"><div class="ico">${icons[r.cat]}</div><span class="tag">FREE SAMPLE</span></div><div class="meta">Class ${r.cls}th • ${r.subject}</div><h3>${r.title}</h3><p>${r.desc}</p><button class="btn outline" data-open="${r.id}">View sample →</button></article>`).join("") || '<p>No samples for this filter.</p>';
+ grid.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openSample(Number(b.dataset.open))));
+}
+const backdrop=document.getElementById("modalBackdrop");
+function openSample(id){const r=resources.find(x=>x.id===id);document.getElementById("modalTitle").textContent=r.title;document.getElementById("modalDesc").textContent=`Class ${r.cls}th • ${r.subject} • ${labels[r.cat]}`;document.getElementById("sampleView").innerHTML=r.content;backdrop.classList.add("open");}
+function closeModal(){backdrop.classList.remove("open")}
+document.getElementById("classFilter").addEventListener("change",render);
+document.getElementById("categoryFilter").addEventListener("change",render);
+document.getElementById("unlockBtn").addEventListener("click",()=>{document.getElementById("modalTitle").textContent="Paid access not connected yet";document.getElementById("modalDesc").textContent="₹30/year checkout is planned for the live version.";document.getElementById("sampleView").innerHTML="<h3>Payment setup required</h3><p>This demo does not accept payments. Before launch, connect a payment gateway, verify successful payments on a server, store access expiry dates, and protect paid files from public access.</p>";backdrop.classList.add("open")});
+document.querySelectorAll(".unlockSmall").forEach(b=>b.addEventListener("click",()=>document.getElementById("unlockBtn").click()));
+document.getElementById("closeModal").addEventListener("click",closeModal);document.getElementById("modalDone").addEventListener("click",closeModal);backdrop.addEventListener("click",e=>{if(e.target===backdrop)closeModal()});
+document.getElementById("menuBtn").addEventListener("click",()=>document.getElementById("navlinks").classList.toggle("show"));
+document.querySelectorAll("#navlinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navlinks").classList.remove("show")));
+render();
+</script>
+</body>
+</html>
