@@ -17,6 +17,9 @@ footer{background:#0b1f3c;color:white;padding:28px 0;margin-top:24px}.footer-row
 .modal-backdrop{position:fixed;inset:0;background:#08172ccc;z-index:30;display:none;align-items:center;justify-content:center;padding:18px}.modal-backdrop.open{display:flex}.modal{background:white;border-radius:20px;padding:24px;width:min(440px,100%);box-shadow:0 20px 70px #0004}.modal h2{margin:0 0 8px}.modal p{color:var(--muted);line-height:1.55}.modal .btn{width:100%;margin-top:10px}.close{float:right;border:0;background:#eef2f8;border-radius:9px;padding:6px 10px;cursor:pointer}.sample-view{background:#f7f9fd;border:1px dashed #b7c8e5;border-radius:12px;padding:16px;margin-top:14px;line-height:1.6}.sample-view h3{margin-top:0}.small{font-size:.8rem;color:var(--muted)}
 @media(max-width:760px){.hero-grid{grid-template-columns:1fr}.hero{padding:35px 0}.hero-card{max-width:560px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.premium{grid-template-columns:1fr}.premium .price-wrap{display:flex;align-items:center;justify-content:space-between;gap:15px}.steps{grid-template-columns:1fr}.navlinks{display:none;position:absolute;top:58px;left:0;right:0;background:var(--navy);padding:18px 4%;flex-direction:column;align-items:flex-start}.navlinks.show{display:flex}.menu{display:block}}
 @media(max-width:480px){.grid{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.select{width:100%}.controls{display:grid;grid-template-columns:1fr}.hero h1{letter-spacing:-.8px}.card{padding:16px}.hero-actions .btn{flex:1}.premium{padding:20px}}
+.lang-btn{border:1px solid #ffffff66;border-radius:9px;background:#ffffff12;color:white;padding:7px 11px;cursor:pointer;font-weight:700}
+.lang-btn.active{background:var(--gold);color:#18243b;border-color:var(--gold)}
+@media(max-width:480px){.langbar{justify-content:center}}
 </style>
 </head>
 <body>
@@ -25,22 +28,26 @@ footer{background:#0b1f3c;color:white;padding:28px 0;margin-top:24px}.footer-row
     <a class="brand" href="#"><span>Board</span>Buddy CG</a>
     <button class="menu" id="menuBtn" aria-label="Open navigation">☰ Menu</button>
     <nav class="navlinks" id="navlinks">
-      <a href="#free">Free Samples</a><a href="#library">Study Library</a><a href="#how">How it works</a><a href="#library" class="btn primary" style="padding:9px 13px">Unlock ₹30/year</a>
+      <a href="#free">Free Samples</a><a href="#library">Study Library</a><a href="#how">How it works</a><a href="#library" class="btn primary" style="padding:9px 13px">₹30 / 6 months</a>
     </nav>
+  </div>
+  <div class="wrap langbar" style="display:flex;justify-content:flex-end;gap:8px;padding:0 0 12px">
+    <button type="button" id="langEn" class="lang-btn active">English</button>
+    <button type="button" id="langHi" class="lang-btn">हिंदी</button>
   </div>
 </header>
 <main>
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">📚 CGBSE • Class 10 &amp; 12</span>
-        <h1>Board exams ki preparation, <span style="color:var(--gold)">ek jagah.</span></h1>
-        <p>Notes, previous-year paper samples aur exam revision guides ko subject-wise explore karo. Pehle free samples dekho, phir full library unlock karo.</p>
-        <div class="hero-actions"><a class="btn primary" href="#free">Explore free samples ↓</a><a class="btn secondary" href="#library">Full library — ₹30/year</a></div>
-        <p class="small" style="color:#dbe6ff;margin-top:15px">Mobile-friendly student demo • Hindi + English interface</p>
+        <span class="eyebrow" id="heroEyebrow">📚 CGBSE • Class 10 &amp; 12</span>
+        <h1 id="heroTitle">Board exams ki preparation, <span style="color:var(--gold)">ek jagah.</span></h1>
+        <p id="heroDesc">Notes, previous-year paper samples aur exam revision guides ko subject-wise explore karo. Pehle free samples dekho, phir full library unlock karo.</p>
+        <div class="hero-actions"><a class="btn primary" id="heroFreeBtn" href="#free">Explore free samples ↓</a><a class="btn secondary" id="heroLibraryBtn" href="#library">Full library — ₹30 / 6 months</a></div>
+        <p class="small" id="heroSmall" style="color:#dbe6ff;margin-top:15px">Mobile-friendly student demo • Hindi + English interface</p>
       </div>
       <div class="hero-card">
-        <h3>Apni class choose karo</h3>
+        <h3 id="chooseClass">Apni class choose karo</h3>
         <div class="mini-stat"><div class="ico">10</div><div><strong>Class 10th</strong><small>Board exam practice</small></div></div>
         <div class="mini-stat"><div class="ico">12</div><div><strong>Class 12th</strong><small>Subject-wise revision</small></div></div>
         <div class="mini-stat"><div class="ico">PDF</div><div><strong>Study resources</strong><small>Samples now, full library after access</small></div></div>
@@ -49,13 +56,13 @@ footer{background:#0b1f3c;color:white;padding:28px 0;margin-top:24px}.footer-row
   </section>
   <section id="free">
     <div class="wrap">
-      <div class="section-head"><div><span class="tag">FREE ACCESS</span><h2 style="margin-top:10px">Free study samples</h2><p>Har category ke 2 sample resources ka demo. Filters se class aur category badlo.</p></div></div>
+      <div class="section-head"><div><span class="tag">FREE ACCESS</span><h2 id="freeSamples" style="margin-top:10px">Free study samples</h2><p id="freeDesc">Har category ke 2 sample resources ka demo. Filters se class aur category badlo.</p></div></div>
       <div class="controls">
         <select class="select" id="classFilter" aria-label="Select class"><option value="all">Class 10th + 12th</option><option value="10">Class 10th</option><option value="12">Class 12th</option></select>
         <select class="select" id="categoryFilter" aria-label="Select category"><option value="all">All categories</option><option value="notes">Notes</option><option value="papers">Previous-year papers</option><option value="guides">Exam guides</option></select>
       </div>
       <div class="grid" id="sampleGrid"></div>
-      <div class="notice">Demo note: yahan example/sample resource cards hain. Real CGBSE PDFs add karne se pehle unki authenticity, academic year aur sharing permission verify karein.</div>
+      <div class="notice" id="sampleNotice">Demo note: yahan example/sample resource cards hain. Real CGBSE PDFs add karne se pehle unki authenticity, academic year aur sharing permission verify karein.</div>
     </div>
   </section>
   <section id="library">
@@ -63,75 +70,244 @@ footer{background:#0b1f3c;color:white;padding:28px 0;margin-top:24px}.footer-row
       <div class="premium">
         <div>
           <span class="tag">FULL LIBRARY</span>
-          <h2>Saare available resources, ek jagah.</h2>
-          <p>Subject-wise notes, previous-year papers aur revision guides. Annual access ek academic year ke liye — ₹30.</p>
-          <div class="features"><span class="feature">✓ Class 10 &amp; 12</span><span class="feature">✓ Subject-wise PDFs</span><span class="feature">✓ Exam revision</span><span class="feature">✓ Mobile friendly</span></div>
+          <h2 id="libraryTitle">Saare available resources, ek jagah.</h2>
+          <p id="libraryDesc">Subject-wise notes, previous-year papers aur revision guides. Access is ₹30 for 6 months.</p>
+          <div class="features"><span class="feature" id="featureClasses">✓ Class 10 &amp; 12</span><span class="feature" id="featurePdfs">✓ Subject-wise PDFs</span><span class="feature" id="featureRevision">✓ Exam revision</span><span class="feature" id="featureMobile">✓ Mobile friendly</span></div>
         </div>
-        <div class="price-wrap"><div class="price">₹30 <small>/ academic year</small></div><button class="btn blue" id="unlockBtn">Unlock full library</button></div>
+        <div class="price-wrap"><div class="price">₹30 <small id="pricePeriod">/ 6 months</small></div><button class="btn blue" id="unlockBtn">Unlock full library</button></div>
       </div>
-      <h2 style="margin:28px 0 8px">Paid library preview</h2>
-      <p style="color:var(--muted);margin-top:0">Categories ka sample layout. Actual paid files secure backend/payment integration ke baad hi unlock honi chahiye.</p>
+      <h2 id="paidPreview" style="margin:28px 0 8px">Paid library preview</h2>
+      <p id="paidPreviewDesc" style="color:var(--muted);margin-top:0">Categories ka sample layout. Actual paid files secure backend/payment integration ke baad hi unlock honi chahiye.</p>
       <div class="grid">
         <article class="card"><div class="card-top"><div class="ico">📘</div><span class="tag lock">🔒 Locked</span></div><h3>Complete Notes</h3><p>Chapter-wise notes aur revision material, subject ke hisaab se.</p><button class="btn outline unlockSmall">Unlock to access</button></article>
         <article class="card"><div class="card-top"><div class="ico">📝</div><span class="tag lock">🔒 Locked</span></div><h3>Previous-year Papers</h3><p>Available board papers aur practice sets, year-wise organized.</p><button class="btn outline unlockSmall">Unlock to access</button></article>
         <article class="card"><div class="card-top"><div class="ico">🎯</div><span class="tag lock">🔒 Locked</span></div><h3>Exam Guides</h3><p>Revision checklists, study plans aur exam preparation guides.</p><button class="btn outline unlockSmall">Unlock to access</button></article>
       </div>
-      <div class="notice"><strong>Payment is not active in this demo.</strong> The unlock button only shows this notice; it does not collect money or grant real paid access. A secure payment gateway and server-side verification are required before launch.</div>
+      <div class="notice" id="paymentNotice"><strong id="paymentNoticeTitle">Payment is not active in this demo.</strong> <span id="paymentNoticeText">The unlock button only shows this notice; it does not collect money or grant real paid access. A secure payment gateway and server-side verification are required before launch.</span></div>
     </div>
   </section>
   <section id="how">
     <div class="wrap">
-      <div class="section-head"><div><h2>Kaise kaam karega?</h2><p>Student ke liye simple 3-step experience.</p></div></div>
+      <div class="section-head"><div><h2 id="howTitle">Kaise kaam karega?</h2><p id="howDesc">Student ke liye simple 3-step experience.</p></div></div>
       <div class="steps">
         <div class="step"><div class="step-num">1</div><h3>Class &amp; subject choose karo</h3><p>Class 10th ya 12th ke resources ko subject aur category ke hisaab se browse karo.</p></div>
         <div class="step"><div class="step-num">2</div><h3>Free samples dekho</h3><p>Har category ke do free sample resources se quality check karo.</p></div>
-        <div class="step"><div class="step-num">3</div><h3>Annual access unlock karo</h3><p>Future live version mein payment verify hone par full permitted library unlock hogi.</p></div>
+        <div class="step"><div class="step-num">3</div><h3 id="step3Title">6-month access unlock karo</h3><p id="step3Desc">Future live version mein payment verify hone par full permitted library unlock hogi.</p></div>
       </div>
     </div>
   </section>
 </main>
-<footer><p style="text-align:center;font-size:13px;color:#9ca3af;">Designed &amp; Developed by <strong>ALYSH KORRAM</strong></p><div class="wrap footer-row"><div><div class="brand"><span>Board</span>Buddy CG</div><p>Independent student-support demo for CGBSE Class 10th and 12th. Not an official CGBSE website. Verify important exam information with official board sources.</p></div><div><strong>Useful</strong><p><a href="#free">Free samples</a><br><a href="#library">Study library</a><br><a href="#how">How it works</a></p></div></div></footer>
+<footer><p style="text-align:center;font-size:13px;color:#9ca3af;"><span id="designedBy">Designed &amp; Developed by</span> <strong>ALYSH KORRAM</strong></p><div class="wrap footer-row"><div><div class="brand"><span>Board</span>Buddy CG</div><p id="footerDesc">Independent student-support demo for CGBSE Class 10th and 12th. Not an official CGBSE website. Verify important exam information with official board sources.</p></div><div><strong id="footerUseful">Useful</strong><p><a id="footerFree" href="#free">Free samples</a><br><a id="footerLibrary" href="#library">Study library</a><br><a id="footerHow" href="#how">How it works</a></p></div></div></footer>
 <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal"><button class="close" id="closeModal" aria-label="Close">✕</button><h2 id="modalTitle">Sample resource</h2><p id="modalDesc">This is a sample preview.</p><div class="sample-view" id="sampleView"></div><button class="btn blue" id="modalDone">Back to library</button><p class="small">Demo preview only. Replace with verified, permitted study material before publishing.</p></div>
+  <div class="modal"><button class="close" id="closeModal" aria-label="Close">✕</button><h2 id="modalTitle">Sample resource</h2><p id="modalDesc">This is a sample preview.</p><div class="sample-view" id="sampleView"></div><button class="btn blue" id="modalDone">Back to library</button><p class="small" id="modalFootnote">Demo preview only. Replace with verified, permitted study material before publishing.</p></div>
 </div>
 <script>
+let currentLanguage = "en";
 const resources = [
- {id:1,cls:"10",cat:"notes",subject:"Science",title:"Science Notes — Sample 1",desc:"Chapter revision overview and key terms.",content:"<h3>Science • Sample Notes</h3><p><strong>Revision tip:</strong> Har chapter ke key terms, diagrams aur examples ko alag list karo.</p><p>Actual notes yahan verified PDF ya original study content ke roop mein add honge.</p>"},
- {id:2,cls:"10",cat:"notes",subject:"Mathematics",title:"Maths Notes — Sample 2",desc:"Formula sheet preview for quick revision.",content:"<h3>Mathematics • Formula Preview</h3><p>Formula revise karne ke baad ek solved example aur ek khud se practice question zaroor karo.</p><p>Actual chapter-wise notes yahan add honge.</p>"},
- {id:3,cls:"10",cat:"papers",subject:"Hindi",title:"Hindi Paper — Sample 1",desc:"Previous-year paper sample card.",content:"<h3>Hindi • Paper Preview</h3><p>Is demo mein asli board paper included nahi hai. Verified, permitted paper ka PDF link yahan add kiya jayega.</p>"},
- {id:4,cls:"10",cat:"papers",subject:"English",title:"English Paper — Sample 2",desc:"Practice paper preview.",content:"<h3>English • Practice Preview</h3><p>Paper attempt karte waqt time limit set karein aur end mein answers review karein.</p>"},
- {id:5,cls:"10",cat:"guides",subject:"All subjects",title:"Exam Guide — Sample 1",desc:"Revision checklist preview.",content:"<h3>Exam Guide • Checklist</h3><ul><li>Important chapters mark karo</li><li>Timed practice karo</li><li>Galtiyon ki list revise karo</li></ul>"},
- {id:6,cls:"10",cat:"guides",subject:"Study plan",title:"Exam Guide — Sample 2",desc:"Simple weekly study plan preview.",content:"<h3>Weekly Study Plan</h3><p>Daily study blocks ko subject, practice aur revision mein divide karo. Breaks aur sleep ke liye bhi time rakho.</p>"},
- {id:7,cls:"12",cat:"notes",subject:"Biology",title:"Biology Notes — Sample 1",desc:"Key concepts and terminology preview.",content:"<h3>Biology • Sample Notes</h3><p>Diagrams ko label ke saath practice karein aur concepts ko apne words mein explain karein.</p>"},
- {id:8,cls:"12",cat:"notes",subject:"Physics",title:"Physics Notes — Sample 2",desc:"Formula and concept recap preview.",content:"<h3>Physics • Formula Preview</h3><p>Formula ke saath units aur ek worked example bhi revise karein.</p>"},
- {id:9,cls:"12",cat:"papers",subject:"Chemistry",title:"Chemistry Paper — Sample 1",desc:"Previous-year paper sample card.",content:"<h3>Chemistry • Paper Preview</h3><p>Actual previous-year paper ka verified, permitted PDF yahan add kiya jayega.</p>"},
- {id:10,cls:"12",cat:"papers",subject:"English",title:"English Paper — Sample 2",desc:"Practice paper preview.",content:"<h3>English • Practice Preview</h3><p>Writing section aur reading comprehension ke liye timed practice karein.</p>"},
- {id:11,cls:"12",cat:"guides",subject:"All subjects",title:"Exam Guide — Sample 1",desc:"Board exam revision guide preview.",content:"<h3>Revision Guide</h3><p>Weak topics ko identify karke short revision sessions schedule karein.</p>"},
- {id:12,cls:"12",cat:"guides",subject:"Study plan",title:"Exam Guide — Sample 2",desc:"Final-week planning preview.",content:"<h3>Final-week Plan</h3><p>New material ke bajay key concepts, practice mistakes aur rest par focus karein.</p>"}
+ {id:1,cls:"10",cat:"notes",subject:"Science",title:"Science Notes — Sample 1",desc:"Chapter revision overview and key terms.",content:"<h3>Science • Sample Notes</h3><p><strong>Study tip:</strong> Make a separate list of the important terms, diagrams, and examples from each chapter.</p><p>Verified PDFs or original study materials will be added here.</p>"},
+ {id:2,cls:"10",cat:"notes",subject:"Mathematics",title:"Maths Notes — Sample 2",desc:"Formula sheet preview for quick revision.",content:"<h3>Mathematics • Formula Preview</h3><p>After reviewing a formula, study one solved example and then try a practice question on your own.</p><p>Chapter-wise notes will be added here.</p>"},
+ {id:3,cls:"10",cat:"papers",subject:"Hindi",title:"Hindi Paper — Sample 1",desc:"Previous-year paper sample card.",content:"<h3>Hindi • Paper Preview</h3><p>This demo does not include an actual board paper. A verified paper that is permitted to be shared will be linked here.</p>"},
+ {id:4,cls:"10",cat:"papers",subject:"English",title:"English Paper — Sample 2",desc:"Practice paper preview.",content:"<h3>English • Practice Preview</h3><p>Set a time limit while attempting the paper, then review your answers when you finish.</p>"},
+ {id:5,cls:"10",cat:"guides",subject:"All subjects",title:"Exam Guide — Sample 1",desc:"Revision checklist preview.",content:"<h3>Exam Guide • Checklist</h3><ul><li>Mark the important chapters</li><li>Practise with a time limit</li><li>Review your list of mistakes</li></ul>"},
+ {id:6,cls:"10",cat:"guides",subject:"Study plan",title:"Exam Guide — Sample 2",desc:"Simple weekly study plan preview.",content:"<h3>Weekly Study Plan</h3><p>Divide your daily study time between subjects, practice, and review. Make sure you also leave enough time for breaks and sleep.</p>"},
+ {id:7,cls:"12",cat:"notes",subject:"Biology",title:"Biology Notes — Sample 1",desc:"Key concepts and terminology preview.",content:"<h3>Biology • Sample Notes</h3><p>Practise drawing and labelling diagrams, and explain each concept in your own words.</p>"},
+ {id:8,cls:"12",cat:"notes",subject:"Physics",title:"Physics Notes — Sample 2",desc:"Formula and concept recap preview.",content:"<h3>Physics • Formula Preview</h3><p>Review the units for each formula and study one worked example.</p>"},
+ {id:9,cls:"12",cat:"papers",subject:"Chemistry",title:"Chemistry Paper — Sample 1",desc:"Previous-year paper sample card.",content:"<h3>Chemistry • Paper Preview</h3><p>A verified previous-year paper PDF that is permitted to be shared will be added here.</p>"},
+ {id:10,cls:"12",cat:"papers",subject:"English",title:"English Paper — Sample 2",desc:"Practice paper preview.",content:"<h3>English • Practice Preview</h3><p>Practise the writing section and reading comprehension with a time limit.</p>"},
+ {id:11,cls:"12",cat:"guides",subject:"All subjects",title:"Exam Guide — Sample 1",desc:"Board exam revision guide preview.",content:"<h3>Revision Guide</h3><p>Identify the topics you find difficult and schedule short review sessions for them.</p>"},
+ {id:12,cls:"12",cat:"guides",subject:"Study plan",title:"Exam Guide — Sample 2",desc:"Final-week planning preview.",content:"<h3>Final-week Plan</h3><p>Focus on key concepts, mistakes from practice, and getting enough rest instead of starting lots of new material.</p>"}
 ];
-const labels={notes:"Notes",papers:"Previous-year paper",guides:"Exam guide"};
+const labels={notes:{en:"Notes",hi:"नोट्स"},papers:{en:"Previous-year paper",hi:"पिछले वर्षों का पेपर"},guides:{en:"Exam guide",hi:"परीक्षा गाइड"}};
 const icons={notes:"📘",papers:"📝",guides:"🎯"};
 const grid=document.getElementById("sampleGrid");
+const ui={
+ en:{
+  heroEyebrow:"📚 CGBSE • Class 10 & 12",
+  heroFreeBtn:"Explore free samples ↓",
+  heroLibraryBtn:"Full library — ₹30 / 6 months",
+  heroSmall:"Mobile-friendly student demo • Hindi + English interface",
+  featureClasses:"✓ Class 10 & 12",
+  featurePdfs:"✓ Subject-wise PDFs",
+  featureRevision:"✓ Exam revision",
+  featureMobile:"✓ Mobile friendly",
+  footerUseful:"Useful",
+  footerFree:"Free samples",
+  footerLibrary:"Study library",
+  footerHow:"How it works",
+  designedBy:"Designed & Developed by",
+  subjectScience:"Science",subjectMaths:"Mathematics",subjectHindi:"Hindi",subjectEnglish:"English",
+  subjectBiology:"Biology",subjectPhysics:"Physics",subjectChemistry:"Chemistry",
+  subjectAll:"All subjects",subjectPlan:"Study plan",
+  menu:"☰ Menu",freeNav:"Free Samples",libraryNav:"Study Library",howNav:"How it works",navPrice:"₹30 / 6 months",
+  heroTitle:'Board exam preparation, <span style="color:var(--gold)">all in one place.</span>',
+  heroDesc:"Explore notes, previous-year paper samples and exam revision guides by subject. Start with free samples, then explore the full library.",
+  chooseClass:"Choose your class",class10:"Class 10",class12:"Class 12",boardPractice:"Board exam practice",subjectRevision:"Subject-wise revision",studyResources:"Study resources",sampleNow:"Samples now, full library after access",
+  freeAccess:"FREE ACCESS",freeSamples:"Free study samples",freeDesc:"Two sample resources per category. Use the filters to choose a class and category.",
+  classAll:"Class 10 + 12",class10Opt:"Class 10",class12Opt:"Class 12",allCats:"All categories",notes:"Notes",papers:"Previous-year papers",guides:"Exam guides",
+  sampleNotice:"Demo note: these are example resource cards. Verify authenticity, academic year and sharing permission before adding real CGBSE PDFs.",
+  fullLibrary:"FULL LIBRARY",libraryTitle:"All available study resources, in one place.",libraryDesc:"Subject-wise notes, previous-year papers and revision guides. Access is ₹30 for 6 months.",
+  paidPreview:"Paid library preview",paidPreviewDesc:"Sample layout only. Paid files should unlock only after secure payment and access integration.",
+  unlock:"Unlock full library",locked:"🔒 Locked",completeNotes:"Complete Notes",completeNotesDesc:"Chapter-wise notes and revision material, organized by subject.",
+  previousPapers:"Previous-year Papers",previousPapersDesc:"Available board papers and practice sets, organized by year.",examGuides:"Exam Guides",examGuidesDesc:"Revision checklists, study plans and exam preparation guides.",unlockAccess:"Unlock to access",
+  paymentInactive:"Payment is not active in this demo.",paymentNotice:"The unlock button only shows this notice; it does not collect money or grant real paid access. A secure payment gateway and server-side verification are required before launch.",
+  howTitle:"How will it work?",howDesc:"A simple 3-step experience for students.",step1:"Choose class and subject",step1d:"Browse Class 10 or 12 resources by subject and category.",step2:"Explore free samples",step2d:"Check the quality using two free sample resources per category.",step3:"Get 6-month access",step3d:"In the future live version, the full permitted library will unlock after payment verification.",
+  footer:"Independent student-support demo for CGBSE Class 10 and 12. Not an official CGBSE website. Verify important exam information with official board sources.",
+  sample:"FREE SAMPLE",view:"View sample →",noSamples:"No samples for this filter.",sampleResource:"Sample resource",samplePreview:"This is a sample preview.",back:"Back to library",previewOnly:"Demo preview only. Replace with verified, permitted study material before publishing.",
+  paymentTitle:"Paid access is not connected yet",paymentDesc:"₹30 for 6-month access is planned for the live version.",paymentHead:"Payment setup required",paymentBody:"This demo does not accept payments. Before launch, connect a payment gateway, verify successful payments on a server, store access expiry dates, and protect paid files from public access."
+ },
+ hi:{
+  heroEyebrow:"📚 CGBSE • कक्षा 10 और 12",
+  heroFreeBtn:"मुफ़्त नमूने देखें ↓", heroLibraryBtn:"पूरी अध्ययन सामग्री — ₹30 / 6 महीने",
+  heroSmall:"मोबाइल पर आसानी से उपयोग करें • हिंदी और अंग्रेज़ी दोनों भाषाओं में",
+  featureClasses:"✓ कक्षा 10 और 12", featurePdfs:"✓ विषय के अनुसार PDF", featureRevision:"✓ परीक्षा की तैयारी", featureMobile:"✓ मोबाइल पर उपयोग में आसान",
+  footerUseful:"ज़रूरी जानकारी", footerFree:"मुफ़्त नमूने", footerLibrary:"अध्ययन सामग्री", footerHow:"काम करने का तरीका", designedBy:"निर्माण और विकास:",
+  subjectScience:"विज्ञान",subjectMaths:"गणित",subjectHindi:"हिंदी",subjectEnglish:"अंग्रेज़ी",subjectBiology:"जीवविज्ञान",subjectPhysics:"भौतिकी",subjectChemistry:"रसायन विज्ञान",subjectAll:"सभी विषय",subjectPlan:"पढ़ाई की योजना",
+  menu:"☰ मेन्यू",freeNav:"मुफ़्त नमूने",libraryNav:"अध्ययन सामग्री",howNav:"यह कैसे काम करता है",navPrice:"₹30 / 6 महीने",
+  heroTitle:'बोर्ड परीक्षा की तैयारी, <span style="color:var(--gold)">अब एक ही जगह।</span>',
+  heroDesc:"विषय के अनुसार नोट्स, पिछले वर्षों के प्रश्नपत्रों के नमूने और परीक्षा की तैयारी के लिए मार्गदर्शिकाएँ देखें। पहले मुफ़्त नमूने देखें, फिर पूरी अध्ययन सामग्री का उपयोग करें।",
+  chooseClass:"अपनी कक्षा चुनें",class10:"कक्षा 10",class12:"कक्षा 12",boardPractice:"बोर्ड परीक्षा का अभ्यास",subjectRevision:"हर विषय की दोहराई",studyResources:"पढ़ाई की सामग्री",sampleNow:"अभी मुफ़्त नमूने, भुगतान के बाद पूरी सामग्री",
+  freeAccess:"मुफ़्त सामग्री",freeSamples:"पढ़ाई के मुफ़्त नमूने",freeDesc:"हर श्रेणी में दो नमूने उपलब्ध हैं। कक्षा और सामग्री का प्रकार चुनने के लिए नीचे दिए गए विकल्पों का उपयोग करें।",
+  classAll:"कक्षा 10 और 12",class10Opt:"कक्षा 10",class12Opt:"कक्षा 12",allCats:"सभी श्रेणियाँ",notes:"अध्याय के नोट्स",papers:"पिछले वर्षों के प्रश्नपत्र",guides:"परीक्षा मार्गदर्शिकाएँ",
+  sampleNotice:"ध्यान दें: यहाँ दिए गए कार्ड केवल उदाहरण हैं। असली CGBSE PDF जोड़ने से पहले उसकी प्रामाणिकता, शैक्षणिक वर्ष और साझा करने की अनुमति की जाँच करें।",
+  fullLibrary:"पूरी अध्ययन सामग्री",libraryTitle:"पढ़ाई की सभी उपलब्ध सामग्री, एक ही जगह।",libraryDesc:"विषय के अनुसार नोट्स, पिछले वर्षों के प्रश्नपत्र और परीक्षा की तैयारी के लिए मार्गदर्शिकाएँ। ₹30 में 6 महीने तक उपयोग करें।",
+  paidPreview:"भुगतान के बाद मिलने वाली सामग्री का नमूना",paidPreviewDesc:"यह केवल नमूना रूपरेखा है। भुगतान और सुरक्षित पहुँच की व्यवस्था जुड़ने के बाद ही पूरी सामग्री उपलब्ध होगी।",
+  unlock:"पूरी सामग्री प्राप्त करें",locked:"🔒 अभी उपलब्ध नहीं",completeNotes:"संपूर्ण अध्यायवार नोट्स",completeNotesDesc:"हर विषय के अध्यायवार नोट्स और दोहराई के लिए अध्ययन सामग्री।",
+  previousPapers:"पिछले वर्षों के प्रश्नपत्र",previousPapersDesc:"उपलब्ध बोर्ड प्रश्नपत्र और अभ्यास-पत्र, वर्ष के अनुसार व्यवस्थित।",examGuides:"परीक्षा की तैयारी के मार्गदर्शक",examGuidesDesc:"दोहराई की सूची, पढ़ाई की योजना और परीक्षा की तैयारी के लिए मार्गदर्शन।",unlockAccess:"उपयोग के लिए प्राप्त करें",
+  paymentInactive:"इस नमूना वेबसाइट पर भुगतान की सुविधा चालू नहीं है।",paymentNotice:"यह बटन केवल जानकारी दिखाता है। इससे पैसे नहीं कटते और न ही भुगतान वाली सामग्री खुलती है। वेबसाइट शुरू करने से पहले सुरक्षित भुगतान सेवा और सर्वर पर भुगतान की पुष्टि की व्यवस्था ज़रूरी है।",
+  howTitle:"यह कैसे काम करेगा?",howDesc:"विद्यार्थियों के लिए तीन आसान चरण।",step1:"कक्षा और विषय चुनें",step1d:"कक्षा 10 या 12 की सामग्री विषय और श्रेणी के अनुसार देखें।",step2:"मुफ़्त नमूने देखें",step2d:"हर श्रेणी के दो मुफ़्त नमूनों को देखकर सामग्री की गुणवत्ता जाँचें।",step3:"6 महीने के लिए सामग्री पाएँ",step3d:"भविष्य में भुगतान की पुष्टि होने के बाद पूरी अनुमत अध्ययन सामग्री उपलब्ध होगी।",
+  footer:"CGBSE कक्षा 10 और 12 के विद्यार्थियों की सहायता के लिए बनाई गई स्वतंत्र वेबसाइट का नमूना। यह आधिकारिक CGBSE वेबसाइट नहीं है। परीक्षा से जुड़ी ज़रूरी जानकारी की पुष्टि आधिकारिक बोर्ड स्रोतों से करें।",
+  sample:"मुफ़्त नमूना",view:"नमूना देखें →",noSamples:"इस चयन के लिए कोई नमूना उपलब्ध नहीं है।",sampleResource:"नमूना सामग्री",samplePreview:"यह सामग्री का एक नमूना है।",back:"सामग्री सूची पर लौटें",previewOnly:"यह केवल देखने के लिए नमूना है। प्रकाशित करने से पहले सत्यापित और साझा करने की अनुमति वाली अध्ययन सामग्री जोड़ें।",
+  paymentTitle:"भुगतान की सुविधा अभी शुरू नहीं हुई है",paymentDesc:"वेबसाइट शुरू होने पर ₹30 में 6 महीने की पहुँच देने की योजना है।",paymentHead:"भुगतान व्यवस्था जोड़ना बाकी है",paymentBody:"यह नमूना वेबसाइट अभी भुगतान स्वीकार नहीं करती। शुरू करने से पहले भुगतान सेवा जोड़नी होगी, सर्वर पर भुगतान की पुष्टि करनी होगी, पहुँच की अंतिम तारीख सुरक्षित रखनी होगी और भुगतान वाली फ़ाइलों को सार्वजनिक पहुँच से बचाना होगा।"
+ }
+};
+const hiResources={
+ 1:["विज्ञान के नोट्स — नमूना 1","अध्याय का सार और महत्वपूर्ण शब्द।","<h3>विज्ञान • नोट्स का नमूना</h3><p><strong>पढ़ाई की सलाह:</strong> हर अध्याय के महत्वपूर्ण शब्द, चित्र और उदाहरण अलग से लिखें।</p><p>यहाँ जाँची हुई PDF या हमारी स्वयं तैयार की गई अध्ययन सामग्री जोड़ी जाएगी।</p>"],
+ 2:["गणित के नोट्स — नमूना 2","जल्दी दोहराने के लिए सूत्रों की सूची।","<h3>गणित • सूत्रों का नमूना</h3><p>सूत्र याद करने के बाद एक हल किया हुआ उदाहरण देखें और फिर एक प्रश्न स्वयं हल करें।</p><p>यहाँ अध्यायवार नोट्स जोड़े जाएँगे।</p>"],
+ 3:["हिंदी प्रश्नपत्र — नमूना 1","पिछले वर्ष के प्रश्नपत्र का नमूना।","<h3>हिंदी • प्रश्नपत्र का नमूना</h3><p>इस नमूने में असली बोर्ड प्रश्नपत्र शामिल नहीं है। जाँचा हुआ और साझा करने की अनुमति वाला प्रश्नपत्र यहाँ जोड़ा जाएगा।</p>"],
+ 4:["अंग्रेज़ी प्रश्नपत्र — नमूना 2","अभ्यास प्रश्नपत्र का नमूना।","<h3>अंग्रेज़ी • अभ्यास प्रश्नपत्र</h3><p>प्रश्नपत्र हल करते समय समय-सीमा तय करें और अंत में अपने उत्तर जाँचें।</p>"],
+ 5:["परीक्षा मार्गदर्शिका — नमूना 1","दोहराई की सूची का नमूना।","<h3>परीक्षा की तैयारी • जाँच सूची</h3><ul><li>महत्वपूर्ण अध्याय चुनें</li><li>समय तय करके प्रश्न हल करें</li><li>अपनी गलतियों को फिर से देखें</li></ul>"],
+ 6:["परीक्षा मार्गदर्शिका — नमूना 2","सप्ताह भर की पढ़ाई की सरल योजना।","<h3>साप्ताहिक पढ़ाई की योजना</h3><p>हर दिन का समय विषयों, प्रश्नों के अभ्यास और दोहराई में बाँटें। आराम और नींद के लिए भी समय रखें।</p>"],
+ 7:["जीवविज्ञान के नोट्स — नमूना 1","मुख्य अवधारणाओं और शब्दों का परिचय।","<h3>जीवविज्ञान • नोट्स का नमूना</h3><p>चित्र बनाकर उनके भागों के नाम लिखने का अभ्यास करें। अवधारणाओं को अपने शब्दों में समझाने की कोशिश करें।</p>"],
+ 8:["भौतिकी के नोट्स — नमूना 2","सूत्रों और अवधारणाओं की दोहराई।","<h3>भौतिकी • सूत्रों का नमूना</h3><p>हर सूत्र के साथ उसकी इकाइयाँ और एक हल किया हुआ उदाहरण भी दोहराएँ।</p>"],
+ 9:["रसायन विज्ञान प्रश्नपत्र — नमूना 1","पिछले वर्ष के प्रश्नपत्र का नमूना।","<h3>रसायन विज्ञान • प्रश्नपत्र का नमूना</h3><p>जाँचा हुआ और साझा करने की अनुमति वाला वास्तविक प्रश्नपत्र यहाँ जोड़ा जाएगा।</p>"],
+ 10:["अंग्रेज़ी प्रश्नपत्र — नमूना 2","अभ्यास प्रश्नपत्र का नमूना।","<h3>अंग्रेज़ी • अभ्यास प्रश्नपत्र</h3><p>लेखन और गद्यांश पढ़कर उत्तर देने का अभ्यास समय तय करके करें।</p>"],
+ 11:["परीक्षा मार्गदर्शिका — नमूना 1","बोर्ड परीक्षा की तैयारी के लिए मार्गदर्शन।","<h3>दोहराई की मार्गदर्शिका</h3><p>जिन विषयों में कठिनाई होती है, उन्हें पहचानें और थोड़े-थोड़े समय के लिए दोहराई करें।</p>"],
+ 12:["परीक्षा मार्गदर्शिका — नमूना 2","परीक्षा से पहले आखिरी सप्ताह की योजना।","<h3>आखिरी सप्ताह की योजना</h3><p>नए विषय शुरू करने के बजाय मुख्य अवधारणाएँ दोहराएँ, अभ्यास में हुई गलतियाँ सुधारें और पर्याप्त आराम करें।</p>"]
+};
+function t(key){return ui[currentLanguage][key] || ui.en[key] || key;}
 function render(){
  const cls=document.getElementById("classFilter").value,cat=document.getElementById("categoryFilter").value;
  const filtered=resources.filter(r=>(cls==="all"||r.cls===cls)&&(cat==="all"||r.cat===cat));
- // Show only two free samples per category for the selected class filter.
  const seen={notes:0,papers:0,guides:0};
  const shown=filtered.filter(r=>{if(seen[r.cat]>=2)return false;seen[r.cat]++;return true;});
- grid.innerHTML=shown.map(r=>`<article class="card"><div class="card-top"><div class="ico">${icons[r.cat]}</div><span class="tag">FREE SAMPLE</span></div><div class="meta">Class ${r.cls}th • ${r.subject}</div><h3>${r.title}</h3><p>${r.desc}</p><button class="btn outline" data-open="${r.id}">View sample →</button></article>`).join("") || '<p>No samples for this filter.</p>';
+ grid.innerHTML=shown.map(r=>{
+  const h=hiResources[r.id],title=currentLanguage==="hi"&&h?h[0]:r.title,desc=currentLanguage==="hi"&&h?h[1]:r.desc;
+  const subjectKey=({"Science":"subjectScience","Mathematics":"subjectMaths","Hindi":"subjectHindi","English":"subjectEnglish","Biology":"subjectBiology","Physics":"subjectPhysics","Chemistry":"subjectChemistry","All subjects":"subjectAll","Study plan":"subjectPlan"})[r.subject];
+  const subjectLabel=subjectKey?t(subjectKey):r.subject;
+  return `<article class="card"><div class="card-top"><div class="ico">${icons[r.cat]}</div><span class="tag">${t("sample")}</span></div><div class="meta">${currentLanguage==="hi"?"कक्षा":"Class"} ${r.cls} • ${subjectLabel}</div><h3>${title}</h3><p>${desc}</p><button class="btn outline" data-open="${r.id}">${t("view")}</button></article>`;
+ }).join("") || `<p>${t("noSamples")}</p>`;
  grid.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openSample(Number(b.dataset.open))));
 }
 const backdrop=document.getElementById("modalBackdrop");
-function openSample(id){const r=resources.find(x=>x.id===id);document.getElementById("modalTitle").textContent=r.title;document.getElementById("modalDesc").textContent=`Class ${r.cls}th • ${r.subject} • ${labels[r.cat]}`;document.getElementById("sampleView").innerHTML=r.content;backdrop.classList.add("open");}
+function openSample(id){
+ const r=resources.find(x=>x.id===id),h=hiResources[id];
+ const subjectKey=({"Science":"subjectScience","Mathematics":"subjectMaths","Hindi":"subjectHindi","English":"subjectEnglish","Biology":"subjectBiology","Physics":"subjectPhysics","Chemistry":"subjectChemistry","All subjects":"subjectAll","Study plan":"subjectPlan"})[r.subject];
+ const subjectLabel=subjectKey?t(subjectKey):r.subject;
+ document.getElementById("modalTitle").textContent=currentLanguage==="hi"&&h?h[0]:r.title;
+ document.getElementById("modalDesc").textContent=`${currentLanguage==="hi"?"कक्षा":"Class"} ${r.cls} • ${subjectLabel} • ${labels[r.cat][currentLanguage]}`;
+ document.getElementById("sampleView").innerHTML=currentLanguage==="hi"&&h?h[2]:r.content;
+ document.getElementById("modalDone").textContent=t("back");
+ document.querySelector("#modalBackdrop .small").textContent=t("previewOnly");
+ backdrop.classList.add("open");
+}
 function closeModal(){backdrop.classList.remove("open")}
+function setLanguage(lang){
+ currentLanguage=lang;
+ document.documentElement.lang=lang==="hi"?"hi":"en";
+ const d=ui[lang];
+ const set=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value;};
+ set("menuBtn",d.menu);
+ set("heroEyebrow",d.heroEyebrow);
+ set("heroFreeBtn",d.heroFreeBtn);
+ set("heroLibraryBtn",d.heroLibraryBtn);
+ set("heroSmall",d.heroSmall);
+ set("featureClasses",d.featureClasses);
+ set("featurePdfs",d.featurePdfs);
+ set("featureRevision",d.featureRevision);
+ set("featureMobile",d.featureMobile);
+ set("footerUseful",d.footerUseful);
+ set("footerFree",d.footerFree);
+ set("footerLibrary",d.footerLibrary);
+ set("footerHow",d.footerHow);
+ set("designedBy",d.designedBy);
+ set("heroEyebrow",d.heroEyebrow);
+ set("heroTitle",d.heroTitle); 
+ document.getElementById("heroTitle").innerHTML=d.heroTitle;
+ set("heroDesc",d.heroDesc);
+ set("heroFreeBtn",d.heroFreeBtn);
+ set("heroLibraryBtn",d.heroLibraryBtn);
+ set("heroSmall",d.heroSmall);
+ set("chooseClass",d.chooseClass);
+ const mini=document.querySelectorAll(".mini-stat");
+ [[d.class10,d.boardPractice],[d.class12,d.subjectRevision],[d.studyResources,d.sampleNow]].forEach((a,i)=>{
+   mini[i].querySelector("strong").textContent=a[0];
+   mini[i].querySelector("small").textContent=a[1];
+ });
+ const nav=document.querySelectorAll("#navlinks a");
+ [d.freeNav,d.libraryNav,d.howNav,d.navPrice].forEach((v,i)=>{if(nav[i])nav[i].textContent=v;});
+ set("freeSamples",d.freeSamples);set("freeDesc",d.freeDesc);
+ const freeTag=document.querySelector("#free .section-head .tag");if(freeTag)freeTag.textContent=d.freeAccess;
+ const cf=document.getElementById("classFilter"),gf=document.getElementById("categoryFilter");
+ [d.classAll,d.class10Opt,d.class12Opt].forEach((v,i)=>cf.options[i].textContent=v);
+ [d.allCats,d.notes,d.papers,d.guides].forEach((v,i)=>gf.options[i].textContent=v);
+ set("sampleNotice",d.sampleNotice);
+ const premiumTag=document.querySelector("#library .premium .tag");if(premiumTag)premiumTag.textContent=d.fullLibrary;
+ set("libraryTitle",d.libraryTitle);set("libraryDesc",d.libraryDesc);
+ document.getElementById("pricePeriod").textContent=lang==="hi"?"/ 6 महीने":"/ 6 months";
+ set("unlockBtn",d.unlock);set("paidPreview",d.paidPreview);set("paidPreviewDesc",d.paidPreviewDesc);
+ const cards=document.querySelectorAll("#library .grid .card");
+ const titles=[d.completeNotes,d.previousPapers,d.examGuides];
+ const descs=[d.completeNotesDesc,d.previousPapersDesc,d.examGuidesDesc];
+ cards.forEach((c,i)=>{
+   c.querySelector(".tag").textContent=d.locked;
+   c.querySelector("h3").textContent=titles[i];
+   c.querySelector("p").textContent=descs[i];
+   c.querySelector("button").textContent=d.unlockAccess;
+ });
+ set("paymentNoticeTitle",d.paymentInactive);set("paymentNoticeText",d.paymentNotice);
+ set("howTitle",d.howTitle);set("howDesc",d.howDesc);
+ const steps=document.querySelectorAll(".step");
+ [[d.step1,d.step1d],[d.step2,d.step2d],[d.step3,d.step3d]].forEach((a,i)=>{
+   steps[i].querySelector("h3").textContent=a[0];
+   steps[i].querySelector("p").textContent=a[1];
+ });
+ set("footerDesc",d.footer);set("footerUseful",d.footerUseful);
+ set("footerFree",d.footerFree);set("footerLibrary",d.footerLibrary);set("footerHow",d.footerHow);
+ set("modalFootnote",d.previewOnly);
+ document.getElementById("langEn").classList.toggle("active",lang==="en");
+ document.getElementById("langHi").classList.toggle("active",lang==="hi");
+ render();
+}
+
 document.getElementById("classFilter").addEventListener("change",render);
 document.getElementById("categoryFilter").addEventListener("change",render);
-document.getElementById("unlockBtn").addEventListener("click",()=>{document.getElementById("modalTitle").textContent="Paid access not connected yet";document.getElementById("modalDesc").textContent="₹30/year checkout is planned for the live version.";document.getElementById("sampleView").innerHTML="<h3>Payment setup required</h3><p>This demo does not accept payments. Before launch, connect a payment gateway, verify successful payments on a server, store access expiry dates, and protect paid files from public access.</p>";backdrop.classList.add("open")});
+document.getElementById("unlockBtn").addEventListener("click",()=>{
+ document.getElementById("modalTitle").textContent=t("paymentTitle");
+ document.getElementById("modalDesc").textContent=t("paymentDesc");
+ document.getElementById("sampleView").innerHTML=`<h3>${t("paymentHead")}</h3><p>${t("paymentBody")}</p>`;
+ document.getElementById("modalDone").textContent=t("back");
+ document.querySelector("#modalBackdrop .small").textContent=t("previewOnly");
+ backdrop.classList.add("open");
+});
 document.querySelectorAll(".unlockSmall").forEach(b=>b.addEventListener("click",()=>document.getElementById("unlockBtn").click()));
-document.getElementById("closeModal").addEventListener("click",closeModal);document.getElementById("modalDone").addEventListener("click",closeModal);backdrop.addEventListener("click",e=>{if(e.target===backdrop)closeModal()});
+document.getElementById("closeModal").addEventListener("click",closeModal);
+document.getElementById("modalDone").addEventListener("click",closeModal);
+backdrop.addEventListener("click",e=>{if(e.target===backdrop)closeModal()});
 document.getElementById("menuBtn").addEventListener("click",()=>document.getElementById("navlinks").classList.toggle("show"));
 document.querySelectorAll("#navlinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navlinks").classList.remove("show")));
-render();
+document.getElementById("langEn").addEventListener("click",()=>setLanguage("en"));
+document.getElementById("langHi").addEventListener("click",()=>setLanguage("hi"));
+setLanguage("en");
 </script>
 </body>
 </html>
